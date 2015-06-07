@@ -1,4 +1,4 @@
-# Google-Maps-widget
+# Google-Maps widget
 Creates a Google-Maps widget with a button to de-/activate interaction.
 
 Very useful if you use it on a mobile device :)
