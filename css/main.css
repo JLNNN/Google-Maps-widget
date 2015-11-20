@@ -38,7 +38,7 @@ div {
 
 .gmap .tapToEnable {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
@@ -48,7 +48,7 @@ div {
 
 .gmap .tapToEnable:after {
     position: absolute;
-    bottom: 13px;
+    top: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.5);
     content: "\f023";
