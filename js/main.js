@@ -1,31 +1,39 @@
-var gmapswidget = {
-    defaultZoom : 13,
+/**
+ * An easy to use Google-Maps widget
+ *
+ * @author Julian Stock <nfo@julianstock.de>
+ * @version 1.0.0
+ * @license MIT
+ */
 
-    loadGMaps : function() {
+ var gmapswidget = {
+    defaultZoom: 13,
+
+    loadGMaps: function(apiKey) {
         if ($("div.gmap").length > 0) {
-            $.getScript("http://maps.google.com/maps/api/js?sensor=true&callback=gmapswidget._showGMaps", function(data, textStatus, jqxhr) {
+            $.getScript("http://maps.google.com/maps/api/js?key=" + apiKey + "&sensor=true&callback=gmapswidget._showGMaps", function(data, textStatus, jqxhr) {
                 // loaded
             });
         }
     },
 
-    _showGMaps : function() {
+    _showGMaps: function() {
         function initMap(x, y, i, z) {
             var map, style = [];
             var center = new google.maps.LatLng(x, y);
             var settings = {
-                mapTypeId : google.maps.MapTypeId.ROADMAP,
-                zoom : z,
-                center : center,
-                styles : style,
-                scrollwheel : false
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                zoom: z,
+                center: center,
+                styles: style,
+                scrollwheel: false
             };
 
             map = new google.maps.Map(document.getElementsByClassName('gmap')[i], settings);
 
             function attachSecretMessage(marker, message) {
                 var infowindow = new google.maps.InfoWindow({
-                    content : message
+                    content: message
                 });
                 google.maps.event.addListener(marker, 'click', function() {
                     infowindow.open(map, marker);
@@ -37,10 +45,10 @@ var gmapswidget = {
                 var yP = $(el).data("gmarker-coords").split(",")[1];
 
                 var marker = new google.maps.Marker({
-                    position : new google.maps.LatLng(xP, yP),
-                    title : $(el).data("gmarker-title"),
-                    animation : google.maps.Animation.DROP,
-                    map : map
+                    position: new google.maps.LatLng(xP, yP),
+                    title: $(el).data("gmarker-title"),
+                    animation: google.maps.Animation.DROP,
+                    map: map
                 });
 
                 marker.setTitle(marker.title.toString());
@@ -83,5 +91,7 @@ var gmapswidget = {
 };
 
 $(function() {
-    gmapswidget.loadGMaps();
+    // https://console.developers.google.com/
+    let apiKey = "INSERT YOUR API KEY HERE";
+    gmapswidget.loadGMaps(apiKey);
 });
