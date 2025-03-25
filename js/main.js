@@ -3,7 +3,7 @@ var gmapswidget = {
 
     loadGMaps : function() {
         if ($("div.gmap").length > 0) {
-            $.getScript("http://maps.google.com/maps/api/js?sensor=true&callback=gmapswidget._showGMaps", function(data, textStatus, jqxhr) {
+            $.getScript("//maps.google.com/maps/api/js?sensor=true&callback=gmapswidget._showGMaps", function(data, textStatus, jqxhr) {
                 // loaded
             });
         }
